@@ -82,7 +82,6 @@
             opacity: 0.4;
         }
 
-        .blog-nav-link { color: #DE7012 !important; }
 
         .collapsible-text {
             max-height: 5em; 
@@ -130,7 +129,7 @@
 
     <main>
         <section id="hero-section" class="text-white text-center flex items-center justify-center">
-            <video autoplay loop muted id="hero-video" class="w-full h-full object-cover">
+            <video autoplay loop id="hero-video" class="w-full h-full object-cover">
                 <source src="rage.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
@@ -415,6 +414,14 @@
                 el.style.color = '';
             });
         });
+
+            const video = document.getElementById('hero-video');
+            video.volume = 1.0; 
+
+            document.addEventListener('click', () => {
+                video.muted = false;
+                video.play().catch(err => console.log(err));
+    });
     </script>
 
 </body>
