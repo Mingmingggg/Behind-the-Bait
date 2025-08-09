@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         body {
@@ -65,10 +65,10 @@
             border-color: #D7990D;
         }
         .quiz-feedback.correct { 
-            color: #a3e635; /* CHANGED: Using a high-contrast lime green */
+            color: #a3e635;
         }
         .quiz-feedback.incorrect { 
-            color: #facc15; /* CHANGED: Using a high-contrast yellow */
+            color: #facc15;
         }
         
         @keyframes fadeIn {
@@ -77,6 +77,26 @@
         }
         .animate-fade-in {
             animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .video-embed-trigger {
+            cursor: pointer;
+        }
+        
+        .video-player-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+        }
+        .video-player-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
@@ -134,20 +154,20 @@
                     <div class="text-center">
                         <h2 class="text-3xl font-title mb-2">UNBAITED EPISODE 1: PART 1</h2>
                         <p class="mb-4 font-body">Rage-Bait Through Videos</p>
-                        <a href="https://www.youtube.com/watch?v=K1QDIfndLqM&autoplay=1" target="_blank" rel="noopener noreferrer">
-                            <img src="1p1.jpg" alt="Unbaited Episode 1 Part 1" class="w-full max-w-2xl rounded-lg shadow-lg mx-auto transform hover:scale-105 transition-transform duration-300" onerror="this.onerror=null;this.src='https://placehold.co/800x450/1C1C1C/F3F3F3?text=Video+Thumbnail';">
-                        </a>
+                        <div class="video-embed-trigger w-full max-w-2xl mx-auto" data-video-id="K1QDIfndLqM">
+                            <img src="1p1.jpg" alt="Unbaited Episode 1 Part 1" class="w-full rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300" onerror="this.onerror=null;this.src='https://placehold.co/800x450/1C1C1C/F3F3F3?text=Video+Thumbnail';">
+                        </div>
                     </div>
                     <div class="text-center">
                         <h2 class="text-3xl font-title mb-2">UNBAITED EPISODE 1: PART 2</h2>
                         <p class="mb-4 font-body">Rage-Bait Through Videos</p>
-                        <a href="https://www.youtube.com/watch?v=zD54l0ngjLQ&autoplay=1" target="_blank" rel="noopener noreferrer">
-                            <img src="1p2.jpg" alt="Unbaited Episode 1 Part 2" class="w-full max-w-2xl rounded-lg shadow-lg mx-auto transform hover:scale-105 transition-transform duration-300" onerror="this.onerror=null;this.src='https://placehold.co/800x450/1C1C1C/F3F3F3?text=Video+Thumbnail';">
-                        </a>
+                        <div class="video-embed-trigger w-full max-w-2xl mx-auto" data-video-id="zD54l0ngjLQ">
+                            <img src="1p2.jpg" alt="Unbaited Episode 1 Part 2" class="w-full rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300" onerror="this.onerror=null;this.src='https://placehold.co/800x450/1C1C1C/F3F3F3?text=Video+Thumbnail';">
+                        </div>
                     </div>
                 </div>
                 <div class="text-center mt-12">
-                    <button id="toggle-quiz-1" class="bg-[#DE7012] text-white font-bold py-3 px-8 rounded-lg hover:bg-[#d7990d] transition-all duration-300 transform hover:scale-105 shadow-lg">Show Quiz & Comments</button>
+                    <button id="toggle-quiz-1" class="bg-[#DE7012] text-white font-bold py-3 px-8 rounded-lg hover:bg-[#d7990d] transition-all duration-300 transform hover:scale-105 shadow-lg">Click here for quiz and comments</button>
                 </div>
                 <div id="quiz-container-1" class="hidden mt-8 bg-[#DE7012] bg-opacity-90 p-8 rounded-lg text-black">
                     <h3 class="text-4xl font-title text-black text-center mb-8">QUIZ & COMMENTS</h3>
@@ -162,13 +182,13 @@
                         <p class="quiz-feedback mt-4 text-left font-bold text-lg h-6"></p>
                     </div>
                     <div class="mt-8 text-left">
-                        <h4 class="font-bold text-xl mb-4 font-body">Leave a Comment</h4>
+                        <h4 class="font-bold text-xl mb-4 font-body">Got insights or reactions? Kindly share it below. We’d appreciate hearing from you!</h4>
                         <form class="comment-form" data-list-id="comments-list-1">
                             <div class="mb-4">
                                 <input type="text" placeholder="Your Name" class="comment-name w-full p-2 rounded-lg bg-white text-black placeholder-gray-500 font-body" required>
                             </div>
                             <div class="mb-4">
-                                <textarea placeholder="Your Comment" rows="4" class="comment-text w-full p-2 rounded-lg bg-white text-black placeholder-gray-500 font-body" required></textarea>
+                                <textarea placeholder="Type your comment here" rows="4" class="comment-text w-full p-2 rounded-lg bg-white text-black placeholder-gray-500 font-body" required></textarea>
                             </div>
                             <button type="submit" class="bg-black text-white font-bold py-2 px-6 rounded-lg hover:bg-gray-800 transition-colors">Post Comment</button>
                         </form>
@@ -184,24 +204,24 @@
                     <div class="text-center">
                         <h2 class="text-3xl font-title mb-2">UNBAITED EPISODE 2: PART 1</h2>
                         <p class="mb-4 font-body">Rage-Bait Through Online Articles</p>
-                        <a href="https://www.youtube.com/watch?v=d8L8iJ5jNFc&autoplay=1" target="_blank" rel="noopener noreferrer">
-                            <img src="2P1.jpg" alt="Unbaited Episode 2 Part 1" class="w-full max-w-2xl rounded-lg shadow-lg mx-auto transform hover:scale-105 transition-transform duration-300" onerror="this.onerror=null;this.src='https://placehold.co/800x450/1C1C1C/F3F3F3?text=Video+Thumbnail';">
-                        </a>
+                        <div class="video-embed-trigger w-full max-w-2xl mx-auto" data-video-id="d8L8iJ5jNFc">
+                            <img src="2P1.jpg" alt="Unbaited Episode 2 Part 1" class="w-full rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300" onerror="this.onerror=null;this.src='https://placehold.co/800x450/1C1C1C/F3F3F3?text=Video+Thumbnail';">
+                        </div>
                     </div>
                     <div class="text-center">
                         <h2 class="text-3xl font-title mb-2">UNBAITED EPISODE 2: PART 2</h2>
                         <p class="mb-4 font-body">Rage-Bait Through Online Articles</p>
-                        <a href="https://www.youtube.com/watch?v=G49CJgH5BpE&autoplay=1" target="_blank" rel="noopener noreferrer">
-                            <img src="2p2.jpg" alt="Unbaited Episode 2 Part 2" class="w-full max-w-2xl rounded-lg shadow-lg mx-auto transform hover:scale-105 transition-transform duration-300" onerror="this.onerror=null;this.src='https://placehold.co/800x450/1C1C1C/F3F3F3?text=Video+Thumbnail';">
-                        </a>
+                        <div class="video-embed-trigger w-full max-w-2xl mx-auto" data-video-id="G49CJgH5BpE">
+                            <img src="2p2.jpg" alt="Unbaited Episode 2 Part 2" class="w-full rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300" onerror="this.onerror=null;this.src='https://placehold.co/800x450/1C1C1C/F3F3F3?text=Video+Thumbnail';">
+                        </div>
                     </div>
                 </div>
                 <div class="text-center mt-12">
-                    <button id="toggle-quiz-2" class="bg-[#913434] text-white font-bold py-3 px-8 rounded-lg hover:bg-[#a14444] transition-all duration-300 transform hover:scale-105 shadow-lg">Show Quiz & Comments</button>
+                    <button id="toggle-quiz-2" class="bg-[#913434] text-white font-bold py-3 px-8 rounded-lg hover:bg-[#a14444] transition-all duration-300 transform hover:scale-105 shadow-lg">Click here for quiz and comments</button>
                 </div>
                 <div id="quiz-container-2" class="hidden mt-8 bg-[#913434] bg-opacity-90 p-8 rounded-lg text-white">
                     <h3 class="text-4xl font-title text-white text-center mb-8">QUIZ & COMMENTS</h3>
-                     <div id="quiz-2" class="mb-8">
+                       <div id="quiz-2" class="mb-8">
                         <h4 class="font-bold text-xl mb-4 text-left font-body">Quiz: Test Your Knowledge!</h4>
                         <p class="mb-4 text-left font-body">Is an online article with a disclaimer a rage-bait?</p>
                         <div class="space-y-3 mb-4 text-left">
@@ -212,13 +232,13 @@
                         <p class="quiz-feedback mt-4 text-left font-bold text-lg h-6"></p>
                     </div>
                     <div class="mt-8 text-left">
-                        <h4 class="font-bold text-xl mb-4 font-body">Share Your Thoughts</h4>
+                        <h4 class="font-bold text-xl mb-4 font-body">Got insights or reactions? Kindly share it below. We’d appreciate hearing from you!</h4>
                         <form class="comment-form" data-list-id="comments-list-2">
                             <div class="mb-4">
                                 <input type="text" placeholder="Your Name" class="comment-name w-full p-2 rounded-lg bg-white text-black placeholder-gray-500 font-body" required>
                             </div>
                             <div class="mb-4">
-                                <textarea placeholder="Your Comment" rows="4" class="comment-text w-full p-2 rounded-lg bg-white text-black placeholder-gray-500 font-body" required></textarea>
+                                <textarea placeholder="Type your comment here" rows="4" class="comment-text w-full p-2 rounded-lg bg-white text-black placeholder-gray-500 font-body" required></textarea>
                             </div>
                             <button type="submit" class="bg-black text-white font-bold py-2 px-6 rounded-lg hover:bg-gray-800 transition-colors">Post Comment</button>
                         </form>
@@ -234,20 +254,20 @@
                     <div class="text-center">
                         <h2 class="text-3xl font-title mb-2">UNBAITED EPISODE 3: PART 1</h2>
                         <p class="mb-4 font-body">For Real or For Rage?</p>
-                        <a href="https://www.youtube.com/watch?v=ctMpFWHECgo&autoplay=1" target="_blank" rel="noopener noreferrer">
-                           <img src="3p1.jpg" alt="Unbaited Episode 3 Part 1" class="w-full max-w-2xl rounded-lg shadow-lg mx-auto transform hover:scale-105 transition-transform duration-300" onerror="this.onerror=null;this.src='https://placehold.co/800x450/1C1C1C/F3F3F3?text=Video+Thumbnail';">
-                        </a>
+                       <div class="video-embed-trigger w-full max-w-2xl mx-auto" data-video-id="ctMpFWHECgo">
+                           <img src="3p1.jpg" alt="Unbaited Episode 3 Part 1" class="w-full rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300" onerror="this.onerror=null;this.src='https://placehold.co/800x450/1C1C1C/F3F3F3?text=Video+Thumbnail';">
+                       </div>
                     </div>
                     <div class="text-center">
                         <h2 class="text-3xl font-title mb-2">UNBAITED EPISODE 3: PART 2</h2>
                         <p class="mb-4 font-body">For Real or For Rage?</p>
-                        <a href="https://www.youtube.com/watch?v=ov0WWZF6fkk&autoplay=1" target="_blank" rel="noopener noreferrer">
-                            <img src="3p2.jpg" alt="Unbaited Episode 3 Part 2" class="w-full max-w-2xl rounded-lg shadow-lg mx-auto transform hover:scale-105 transition-transform duration-300" onerror="this.onerror=null;this.src='https://placehold.co/800x450/1C1C1C/F3F3F3?text=Video+Thumbnail';">
-                        </a>
+                        <div class="video-embed-trigger w-full max-w-2xl mx-auto" data-video-id="ov0WWZF6fkk">
+                            <img src="3p2.jpg" alt="Unbaited Episode 3 Part 2" class="w-full rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300" onerror="this.onerror=null;this.src='https://placehold.co/800x450/1C1C1C/F3F3F3?text=Video+Thumbnail';">
+                        </div>
                     </div>
                 </div>
                 <div class="text-center mt-12">
-                    <button id="toggle-quiz-3" class="bg-[#6F4F5E] text-white font-bold py-3 px-8 rounded-lg hover:bg-[#8f6f7e] transition-all duration-300 transform hover:scale-105 shadow-lg">Show Quiz & Comments</button>
+                    <button id="toggle-quiz-3" class="bg-[#6F4F5E] text-white font-bold py-3 px-8 rounded-lg hover:bg-[#8f6f7e] transition-all duration-300 transform hover:scale-105 shadow-lg">Click here for quiz and comments</button>
                 </div>
                 <div id="quiz-container-3" class="hidden mt-8 bg-[#6F4F5E] bg-opacity-90 p-8 rounded-lg text-white">
                     <h3 class="text-4xl font-title text-white text-center mb-8">QUIZ & COMMENTS</h3>
@@ -262,13 +282,13 @@
                         <p class="quiz-feedback mt-4 text-left font-bold text-lg h-6"></p>
                     </div>
                     <div class="mt-8 text-left">
-                        <h4 class="font-bold text-xl mb-4 font-body">Final Thoughts?</h4>
+                        <h4 class="font-bold text-xl mb-4 font-body">Got insights or reactions? Kindly share it below. We’d appreciate hearing from you!</h4>
                         <form class="comment-form" data-list-id="comments-list-3">
                             <div class="mb-4">
                                 <input type="text" placeholder="Your Name" class="comment-name w-full p-2 rounded-lg bg-white text-black placeholder-gray-500 font-body" required>
                             </div>
                             <div class="mb-4">
-                                <textarea placeholder="Your Comment" rows="4" class="comment-text w-full p-2 rounded-lg bg-white text-black placeholder-gray-500 font-body" required></textarea>
+                                <textarea placeholder="Type your comment here" rows="4" class="comment-text w-full p-2 rounded-lg bg-white text-black placeholder-gray-500 font-body" required></textarea>
                             </div>
                             <button type="submit" class="bg-black text-white font-bold py-2 px-6 rounded-lg hover:bg-gray-800 transition-colors">Post Comment</button>
                         </form>
@@ -299,123 +319,143 @@
     </footer>
 
     <script>
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcon = menuBtn.querySelector('i');
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = menuBtn.querySelector('i');
 
-        menuBtn.addEventListener('click', () => {
-            const isHidden = mobileMenu.classList.toggle('hidden');
-            document.body.style.overflow = isHidden ? 'auto' : 'hidden';
+            menuBtn.addEventListener('click', () => {
+                const isHidden = mobileMenu.classList.toggle('hidden');
+                document.body.style.overflow = isHidden ? 'auto' : 'hidden';
 
-            if (isHidden) {
-                menuIcon.classList.remove('fa-times');
-                menuIcon.classList.add('fa-bars');
-            } else {
-                menuIcon.classList.remove('fa-bars');
-                menuIcon.classList.add('fa-times');
-            }
-        });
-
-        const hoverColors = ['#F9F3EF', '#6F4F5E', '#913434', '#DE7012', '#D7990D'];
-
-        const desktopNavLinks = document.querySelectorAll('header nav a');
-        desktopNavLinks.forEach(link => {
-            link.addEventListener('mouseover', () => {
-                const randomColor = hoverColors[Math.floor(Math.random() * hoverColors.length)];
-                link.style.color = randomColor;
-            });
-            link.addEventListener('mouseout', () => {
-                link.style.color = ''; 
-            });
-        });
-
-        const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('mouseover', () => {
-                const randomColor = hoverColors[Math.floor(Math.random() * hoverColors.length)];
-                link.style.color = randomColor;
-            });
-            link.addEventListener('mouseout', () => {
-                if (!link.classList.contains('blog-nav-link')) {
-                    link.style.color = '#F3F3F3'; 
+                if (isHidden) {
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
                 } else {
-                    link.style.color = '#DE7012';
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-times');
                 }
             });
-        });
 
-        function setupQuizToggle(buttonId, sectionId) {
-            const toggleButton = document.getElementById(buttonId);
-            const quizSection = document.getElementById(sectionId);
-            if (toggleButton && quizSection) {
-                toggleButton.addEventListener('click', () => {
-                    const isHidden = quizSection.classList.toggle('hidden');
-                    toggleButton.textContent = isHidden ? 'Show Quiz & Comments' : 'Hide Quiz & Comments';
+            const hoverColors = ['#F9F3EF', '#6F4F5E', '#913434', '#DE7012', '#D7990D'];
+
+            const desktopNavLinks = document.querySelectorAll('header nav a');
+            desktopNavLinks.forEach(link => {
+                link.addEventListener('mouseover', () => {
+                    const randomColor = hoverColors[Math.floor(Math.random() * hoverColors.length)];
+                    link.style.color = randomColor;
                 });
+                link.addEventListener('mouseout', () => {
+                    link.style.color = ''; 
+                });
+            });
+
+            const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('mouseover', () => {
+                    const randomColor = hoverColors[Math.floor(Math.random() * hoverColors.length)];
+                    link.style.color = randomColor;
+                });
+                link.addEventListener('mouseout', () => {
+                    if (!link.classList.contains('blog-nav-link')) {
+                        link.style.color = '#F3F3F3'; 
+                    } else {
+                        link.style.color = '#DE7012';
+                    }
+                });
+            });
+
+            function setupQuizToggle(buttonId, sectionId) {
+                const toggleButton = document.getElementById(buttonId);
+                const quizSection = document.getElementById(sectionId);
+                if (toggleButton && quizSection) {
+                    toggleButton.addEventListener('click', () => {
+                        const isHidden = quizSection.classList.toggle('hidden');
+                        toggleButton.textContent = isHidden ? 'Click here for quiz and comments' : 'Hide quiz and comments';
+                    });
+                }
             }
-        }
-        setupQuizToggle('toggle-quiz-1', 'quiz-container-1');
-        setupQuizToggle('toggle-quiz-2', 'quiz-container-2');
-        setupQuizToggle('toggle-quiz-3', 'quiz-container-3');
+            setupQuizToggle('toggle-quiz-1', 'quiz-container-1');
+            setupQuizToggle('toggle-quiz-2', 'quiz-container-2');
+            setupQuizToggle('toggle-quiz-3', 'quiz-container-3');
 
-        const selectedAnswers = {};
-        document.querySelectorAll('.quiz-option').forEach(button => {
-            button.addEventListener('click', () => {
-                const quizId = button.dataset.quiz;
-                selectedAnswers[quizId] = button.dataset.answer;
-                document.querySelectorAll(`.quiz-option[data-quiz="${quizId}"]`).forEach(btn => btn.classList.remove('selected'));
-                button.classList.add('selected');
+            const selectedAnswers = {};
+            document.querySelectorAll('.quiz-option').forEach(button => {
+                button.addEventListener('click', () => {
+                    const quizId = button.dataset.quiz;
+                    selectedAnswers[quizId] = button.dataset.answer;
+                    document.querySelectorAll(`.quiz-option[data-quiz="${quizId}"]`).forEach(btn => btn.classList.remove('selected'));
+                    button.classList.add('selected');
+                });
             });
-        });
 
-        document.querySelectorAll('.submit-quiz-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                const quizId = button.dataset.quiz;
-                const correctAnswer = button.dataset.correct;
-                const userAnswer = selectedAnswers[quizId];
-                const feedbackEl = document.querySelector(`#quiz-${quizId} .quiz-feedback`);
-                
-                if (!userAnswer) {
-                    feedbackEl.textContent = "Please select an answer first!";
-                    feedbackEl.className = 'quiz-feedback mt-4 text-left font-bold text-lg h-6 text-yellow-300';
-                    return;
-                }
-                
-                feedbackEl.textContent = userAnswer === correctAnswer ? "Correct!" : "Incorrect. Try again!";
-                feedbackEl.className = `quiz-feedback mt-4 text-left font-bold text-lg h-6 ${userAnswer === correctAnswer ? 'correct' : 'incorrect'}`;
-            });
-        });
-
-        document.querySelectorAll('.comment-form').forEach(form => {
-            form.addEventListener('submit', function(event) {
-                event.preventDefault();
-                const listId = this.dataset.listId;
-                const commentsList = document.getElementById(listId);
-                const nameInput = this.querySelector('.comment-name');
-                const commentInput = this.querySelector('.comment-text');
-                
-                const name = nameInput.value.trim();
-                const commentText = commentInput.value.trim();
-
-                if (name && commentText) {
-                    const commentElement = document.createElement('div');
-                    commentElement.classList.add('bg-black', 'bg-opacity-20', 'p-4', 'rounded-lg', 'animate-fade-in');
+            document.querySelectorAll('.submit-quiz-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    const quizId = button.dataset.quiz;
+                    const correctAnswer = button.dataset.correct;
+                    const userAnswer = selectedAnswers[quizId];
+                    const feedbackEl = document.querySelector(`#quiz-${quizId} .quiz-feedback`);
                     
-                    const nameElement = document.createElement('p');
-                    nameElement.classList.add('font-bold', 'font-body');
-                    nameElement.textContent = name;
+                    if (!userAnswer) {
+                        feedbackEl.textContent = "Please select an answer first!";
+                        feedbackEl.className = 'quiz-feedback mt-4 text-left font-bold text-lg h-6 text-yellow-300';
+                        return;
+                    }
+                    
+                    feedbackEl.textContent = userAnswer === correctAnswer ? "Correct!" : "Incorrect. Try again!";
+                    feedbackEl.className = `quiz-feedback mt-4 text-left font-bold text-lg h-6 ${userAnswer === correctAnswer ? 'correct' : 'incorrect'}`;
+                });
+            });
 
-                    const textElement = document.createElement('p');
-                    textElement.classList.add('mt-2', 'font-body');
-                    textElement.textContent = commentText;
+            document.querySelectorAll('.comment-form').forEach(form => {
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    const listId = this.dataset.listId;
+                    const commentsList = document.getElementById(listId);
+                    const nameInput = this.querySelector('.comment-name');
+                    const commentInput = this.querySelector('.comment-text');
+                    
+                    const name = nameInput.value.trim();
+                    const commentText = commentInput.value.trim();
 
-                    commentElement.appendChild(nameElement);
-                    commentElement.appendChild(textElement);
-                    commentsList.prepend(commentElement);
+                    if (name && commentText) {
+                        const commentElement = document.createElement('div');
+                        commentElement.classList.add('bg-black', 'bg-opacity-20', 'p-4', 'rounded-lg', 'animate-fade-in');
+                        
+                        const nameElement = document.createElement('p');
+                        nameElement.classList.add('font-bold', 'font-body');
+                        nameElement.textContent = name;
 
-                    nameInput.value = '';
-                    commentInput.value = '';
-                }
+                        const textElement = document.createElement('p');
+                        textElement.classList.add('mt-2', 'font-body');
+                        textElement.textContent = commentText;
+
+                        commentElement.appendChild(nameElement);
+                        commentElement.appendChild(textElement);
+                        commentsList.prepend(commentElement);
+
+                        nameInput.value = '';
+                        commentInput.value = '';
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.video-embed-trigger').forEach(trigger => {
+                trigger.addEventListener('click', function() {
+                    const videoId = this.dataset.videoId;
+                    const videoPlayerHTML = `
+                        <div class="video-player-container rounded-lg shadow-lg">
+                            <iframe 
+                                src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" 
+                                title="YouTube video player" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    `;
+                    this.outerHTML = videoPlayerHTML;
+                });
             });
         });
     </script>
