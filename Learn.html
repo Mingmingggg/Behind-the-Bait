@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn - Behind The Bait</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        body {
+            background-color: #1C1C1C;
+            color: #F3F3F3;
+            font-family: 'Ubuntu', sans-serif; 
+        }
+        .font-title {
+            font-family: 'Chakra Petch', sans-serif;
+            font-weight: 700;
+        }
+        .font-body {
+            font-family: 'Ubuntu', sans-serif;
+        }
+        .section-bg {
+            position: relative;
+        }
+        .section-bg::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 0;
+            background-size: cover;
+            background-position: center;
+        }
+        .section-bg::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 1;
+            background: linear-gradient( to bottom, #111111 0%, rgba(17, 17, 17, 0.7) 25%, rgba(17, 17, 17, 0.7) 75%, #111111 100% );
+        }
+        .section-content {
+            position: relative;
+            z-index: 2;
+        }
+        #hero-section {
+            height: 90vh;
+            position: relative;
+            overflow: hidden;
+        }
+        #hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -100;
+            transform: translateX(-50%) translateY(-50%);
+            background-size: cover;
+            transition: 1s opacity;
+        }
+        #effects::before { 
+            background-image: url('1.jpg'); 
+            opacity: 0.3;
+        }
+        #creators { 
+            background-color: black; 
+        }
+        #detection::before { 
+            background-image: url('5.jpg'); 
+            opacity: 0.4;
+        }
+        #handling::before { 
+            background-image: url('12.png'); 
+            opacity: 0.4;
+        }
+
+        .blog-nav-link { color: #DE7012 !important; }
+
+        .collapsible-text {
+            max-height: 5em; 
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        .collapsible-text.expanded {
+            max-height: 1000px; 
+        }
+    </style>
+</head>
+<body class="bg-[#1C1C1C]">
+
+    <header class="py-2 px-4 md:px-8 sticky top-0 bg-[#1C1C1C] bg-opacity-80 backdrop-blur-sm z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center">
+                <div class="w-48 h-28 flex items-center justify-center p-1">
+                    <img src="logo.png" alt="Behind The Bait Logo" class="w-full h-full object-contain" onerror="this.onerror=null;this.src='https://placehold.co/192x112/1C1C1C/F3F3F3?text=Logo';">
+                </div>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="Video.html" class="transition-colors duration-300 font-bold">Watch</a>
+                <a href="Learn.html" class="transition-colors duration-300 font-bold text-[#913434]">Learn</a>
+                <a href="Blog.html" class="blog-nav-link transition-colors duration-300 font-bold">Blog</a>
+                <a href="Contact.html" class="transition-colors duration-300 font-bold">Contact</a>
+                <a href="Team.html" class="transition-colors duration-300 font-bold">About Us</a>
+            </nav>
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-white focus:outline-none z-50 relative">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-[#1C1C1C]/95 backdrop-blur-sm z-40">
+        <div class="flex flex-col items-center justify-center h-full text-center space-y-6">
+            <a href="Video.html" class="text-2xl font-bold text-white">Watch</a>
+            <a href="Learn.html" class="text-2xl font-bold text-white">Learn</a>
+            <a href="Blog.html" class="blog-nav-link text-2xl font-bold">Blog</a>
+            <a href="Contact.html" class="text-2xl font-bold text-white">Contact</a>
+            <a href="Team.html" class="text-2xl font-bold text-white">About Us</a>
+        </div>
+    </div>
+
+    <main>
+        <section id="hero-section" class="text-white text-center flex items-center justify-center">
+            <video autoplay loop muted id="hero-video" class="w-full h-full object-cover">
+                <source src="rage.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </section>
+
+        <section id="what-is" class="bg-[#111111] text-white text-center py-20 px-4 sm:px-8">
+            <div class="section-content flex flex-col items-center">
+                <h2 class="font-title text-5xl md:text-6xl mb-12 hover-colorize">What is Rage-Baiting?</h2>
+                <div class="w-full max-w-4xl aspect-video mb-12">
+                  <img src="Illus 4.jpg" alt="A thumbnail from the YouTube video titled 'RAGE BAIT 101: WHAT IS RAGE-BAITING?'">
+                </div>
+            </div>
+        </section>
+
+        <section id="learn" class="bg-[#111111] text-white py-20 px-4 sm:px-8">
+             <div class="container mx-auto grid md:grid-cols-2 gap-12 text-left max-w-6xl">
+                <div class="bg-black bg-opacity-50 p-8 rounded-lg border border-gray-700">
+                    <h3 class="font-title text-3xl text-red-500 mb-4 hover-colorize">Rage-Baiting</h3>
+                    <p class="text-lg font-body hover-colorize">
+                        Is a strategy used online by content creators intentionally to provoke anger and emotional reactions. This type of content involves strong opinions, offensive remarks, misleading information, and exaggerated reactions, designed to spark outrage, provoke division, and gain higher social media engagement.
+                    </p>
+                </div>
+                <div class="bg-black bg-opacity-50 p-8 rounded-lg border border-gray-700">
+                    <h3 class="font-title text-3xl text-red-500 mb-4 hover-colorize">Why Adults are More Susceptible</h3>
+                    <div class="collapsible-text">
+                        <p class="text-lg font-body hover-colorize">
+                            Adult social media users, particularly Gen X, are more likely to fall for rage-baiting. Compared to today’s generation, adults did not grow up with digital technology and had to adapt while carrying plenty of obligations. Combining this with all the unfamiliar terms, fast-moving trends, and overwhelming content online, it’s easy to feel confused or even misled. However, this isn’t a failure in keeping up; it’s simply because the digital world changes so fast. Honestly, who would’ve thought that some content creators would resort to this type of scheme just for engagements?
+                        </p>
+                    </div>
+                    <button class="read-more-btn text-red-500 hover:underline mt-2">See More</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="effects" class="section-bg py-20 px-4 sm:px-8">
+            <div class="section-content container mx-auto text-center">
+                <h2 class="font-title text-5xl md:text-6xl mb-20 hover-colorize">NEGATIVE EFFECTS</h2>
+                <div class="space-y-20 max-w-7xl mx-auto">
+                    <div class="md:flex items-center gap-12 text-center md:text-left">
+                        <img src="emotional-stress.png" alt="Emotional Stress Icon" class="w-full max-w-md md:max-w-2xl h-auto rounded-lg object-cover mb-6 md:mb-0 mx-auto" onerror="this.onerror=null;this.src='https://placehold.co/500x281/1C1C1C/F3F3F3?text=Emotional+Stress';">
+                        <div class="md:w-1/2">
+                            <h3 class="font-title text-3xl mb-4 hover-colorize">Emotional Stress</h3>
+                            <p class="font-body text-lg hover-colorize">Rage-bait contents are created to gather negative reactions, and the constant burst of emotions leads to feeling emotionally and physically drained and on edge.</p>
+                        </div>
+                    </div>
+                    <div class="md:flex flex-row-reverse items-center gap-12 text-center md:text-left">
+                        <img src="anxiety.png" alt="Anxiety Icon" class="w-full max-w-md md:max-w-2xl h-auto rounded-lg object-cover mb-6 md:mb-0 mx-auto" onerror="this.onerror=null;this.src='https://placehold.co/500x281/1C1C1C/F3F3F3?text=Anxiety';">
+                        <div class="md:w-1/2">
+                            <h3 class="font-title text-3xl mb-4 hover-colorize">Anxiety</h3>
+                            <p class="font-body text-lg hover-colorize">Continuous inducement of provoking content may lead to the development of anxiety disorder. Seeing aggressive and upsetting content could result in feeling uneasy or constant tension for the audience.</p>
+                        </div>
+                    </div>
+                    <div class="md:flex items-center gap-12 text-center md:text-left">
+                        <img src="division.png" alt="Division Icon" class="w-full max-w-md md:max-w-2xl h-auto rounded-lg object-cover mb-6 md:mb-0 mx-auto" onerror="this.onerror=null;this.src='https://placehold.co/500x281/1C1C1C/F3F3F3?text=Division';">
+                        <div class="md:w-1/2">
+                            <h3 class="font-title text-3xl mb-4 hover-colorize">Division</h3>
+                            <p class="font-body text-lg hover-colorize">Rage-bait creators fuels polarization when socially relevant issues have different perspectives, such creators tend to use it as a material for social media users to divide and prove their point. This causes online spaces to become toxic and unhealthy instead of people sharing their sentiments with no harm or attacking different opinions.</p>
+                        </div>
+                    </div>
+                    <div class="md:flex flex-row-reverse items-center gap-12 text-center md:text-left">
+                        <img src="harassment.png" alt="Harassment Icon" class="w-full max-w-md md:max-w-2xl h-auto rounded-lg object-cover mb-6 md:mb-0 mx-auto" onerror="this.onerror=null;this.src='https://placehold.co/500x281/1C1C1C/F3F3F3?text=Harassment';">
+                        <div class="md:w-1/2">
+                            <h3 class="font-title text-3xl mb-4 hover-colorize">Harassment</h3>
+                            <p class="font-body text-lg hover-colorize">The use of attacking or slandering public figures and personalities is also a way for people to be hooked. This practice fosters hate for known personalities, which causes them to be digitally harassed by people who fall into the trap of rage-bait creators.</p>
+                        </div>
+                    </div>
+                     <div class="md:flex items-center gap-12 text-center md:text-left">
+                        <img src="misinformation.png" alt="Misinformation Icon" class="w-full max-w-md md:max-w-2xl h-auto rounded-lg object-cover mb-6 md:mb-0 mx-auto" onerror="this.onerror=null;this.src='https://placehold.co/500x281/1C1C1C/F3F3F3?text=Misinformation';">
+                        <div class="md:w-1/2">
+                            <h3 class="font-title text-3xl mb-4 hover-colorize">Misinformation</h3>
+                            <p class="font-body text-lg hover-colorize">In the process of rage-baiting, such content creators would resort to adding wrong information or twisted reality to bait the audience and make them react; this process causes the spread of misinformation that could result in confusion.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="creators" class="section-bg creators-bg py-20 px-4 sm:px-8">
+            <div class="section-content container mx-auto text-center">
+                <h2 class="font-title text-5xl md:text-6xl mb-20 hover-colorize">Why Content Creators Use Rage-Baiting</h2>
+                <div class="space-y-20 max-w-7xl mx-auto">
+                    <div class="md:flex items-center gap-12 text-left">
+                        <img src="highengagements.png" alt="High Engagement Icon" class="w-full md:w-1/2 h-auto rounded-lg object-cover mb-6 md:mb-0 mx-auto" onerror="this.onerror=null;this.src='https://placehold.co/500x281/1C1C1C/F3F3F3?text=High+Engagements';">
+                        <div class="md:w-1/2">
+                            <h3 class="font-title text-4xl mb-4 hover-colorize">High Engagements</h3>
+                            <div class="collapsible-text">
+                                <p class="font-body text-lg hover-colorize">To gain high visibility in the digital world, a post must have flooding likes, comments, and shares. It is easy to produce content; however, gaining engagement is another job. The use of rage-baiting acts like a magnet to gain reactions, even if they are not positive, because no matter how big of effort content creators put into their posts, it won’t work unless there’s a hook. There are some who keep their integrity, but there are also those who completely ignore healthy digital spaces. The achievement of gaining high visibility leads to many opportunities, which have inspired content creators to resort to rage-baiting.</p>
+                            </div>
+                            <button class="read-more-btn text-red-500 hover:underline mt-2">See More</button>
+                        </div>
+                    </div>
+                    <div class="md:flex flex-row-reverse items-center gap-12 text-left">
+                        <img src="spreadpropaganda.png" alt="Propaganda Icon" class="w-full md:w-1/2 h-auto rounded-lg object-cover mb-6 md:mb-0 mx-auto" onerror="this.onerror=null;this.src='https://placehold.co/500x281/1C1C1C/F3F3F3?text=Propaganda';">
+                        <div class="md:w-1/2">
+                            <h3 class="font-title text-4xl mb-4 hover-colorize">Spread Propaganda</h3>
+                            <p class="font-body text-lg hover-colorize">Rage-baiting can be a way to control public narratives. It often spreads half-truths, defamation, misinformation, political agendas, and conspiracy theories under the guise of emotionally charged content. Often it’s a layered form of manipulation: A bait inside a bait, concealing a negative call to action beneath the outrage.</p>
+                        </div>
+                    </div>
+                    <div class="md:flex items-center gap-12 text-left">
+                        <img src="financial-benefit.png" alt="Financial Benefit Icon" class="w-full md:w-1/2 h-auto rounded-lg object-cover mb-6 md:mb-0 mx-auto" onerror="this.onerror=null;this.src='https://placehold.co/500x281/1C1C1C/F3F3F3?text=Financial+Benefit';">
+                        <div class="md:w-1/2">
+                            <h3 class="font-title text-4xl mb-4 hover-colorize">Financial Benefit</h3>
+                            <p class="font-body text-lg hover-colorize">As mentioned, high engagement leads to many opportunities, and one of them is financial gain. Content creators get paid from advertisements that appear within videos posted on social media platforms, or some brands sponsor them in exchange for product placement in their content.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="detection" class="section-bg detection-bg py-20 px-4 sm:px-8">
+            <div class="section-content container mx-auto text-center">
+                <h2 class="font-title text-5xl md:text-6xl mb-16 hover-colorize">RAGE-BAIT DETECTION</h2>
+                <div class="grid md:grid-cols-3 gap-10 max-w-7xl mx-auto text-left">
+                    <div class="bg-black bg-opacity-50 p-8 rounded-lg">
+                        <img src="Illus 12.jpg" alt="Provocative Phrasing" class="w-full h-auto object-cover rounded-md mb-6 mx-auto" onerror="this.onerror=null;this.src='https://placehold.co/400x225/1C1C1C/F3F3F3?text=Provocative';">
+                        <h3 class="font-title text-2xl mb-3 hover-colorize">Provocative Phrasing</h3>
+                        <div class="collapsible-text">
+                            <p class="font-body text-base hover-colorize">A rage-bait content typically draws on language that could trigger negative emotional reactions. This includes the use of wordplay, metaphors, or idioms. May include choice of words that are mocking, insulting, or loaded terms; those that carry strong emotions or cultural weight. This conveniently turns a simple statement into more aggressive, mocking, or insulting expressions. Phrases like “Bobo/Tanga”, “Mga squatter”, “Iyakin” are used to offend people, making them feel belittled. When people read or hear this in a content, they will be more likely to engage with the content, thinking that they could hurt the creator as well, or they attempt to defend themselves.</p>
+                        </div>
+                        <button class="read-more-btn text-red-500 hover:underline mt-2">See More</button>
+                    </div>
+                    <div class="bg-black bg-opacity-50 p-8 rounded-lg">
+                        <img src="Illus 13.jpg" alt="Disclaimers" class="w-full h-auto object-cover rounded-md mb-6 mx-auto" onerror="this.onerror=null;this.src='https://placehold.co/400x225/1C1C1C/F3F3F3?text=Disclaimers';">
+                        <h3 class="font-title text-2xl mb-3 hover-colorize">Disclaimers</h3>
+                        <div class="collapsible-text">
+                            <p class="font-body text-base hover-colorize">Not all sensationalized content is rage-baiting. There are contents where the creator does share their personal opinion, and there is a fine line between proper opinionated content and intentionally provoking content. If a post or videos are clearly presented as an opinion piece, such as tabloids, talk shows, opinion columns, or editorial, and have a disclaimer that the views are personal, then it is likely meant to express rather than provoke. That means if there is no clear context, no disclaimers, and the content seemingly meant to offend without explanation, that is more likely a rage-bait. It is best to watch or read content critically. If it feels like the sole purpose is to provoke and offend you and others, or seems to be promoting outrage and conflict, then that’s something to be assessed.</p>
+                        </div>
+                        <button class="read-more-btn text-red-500 hover:underline mt-2">See More</button>
+                    </div>
+                    <div class="bg-black bg-opacity-50 p-8 rounded-lg">
+                        <img src="Illus 11.jpg" alt="Tone and Conduct" class="w-full h-auto object-cover rounded-md mb-6 mx-auto" onerror="this.onerror=null;this.src='https://placehold.co/400x225/1C1C1C/F3F3F3?text=Tone';">
+                        <h3 class="font-title text-2xl mb-3 hover-colorize">Tone and Conduct</h3>
+                        <div class="collapsible-text">
+                            <p class="font-body text-base hover-colorize">The most noticeable signs of rage-baiting are the tone. Such content usually sounds sarcastic, overly aggressive, and dramatically intense. Rage-bait creators are unbothered with the demeanor they show to the public, and no appropriate way of presenting information. At its core, the speaker’s objective is to gather reactions rather than create discussions. A proper content creator presents themselves to be natural and composed, no matter what the topic or content is, they can show their disappointment without being exaggerated. Pay attention to the tone and conduct of the creator. If they laugh hysterically, act exaggerated, intentionally raise their voice, have piercing eyes, or speak condescendingly and seem like they are teasing and provoking, these are indications of the creator’s cruel intention.</p>
+                        </div>
+                         <button class="read-more-btn text-red-500 hover:underline mt-2">See More</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="handling" class="section-bg handling-bg py-20 px-4 sm:px-8">
+            <div class="section-content container mx-auto text-center">
+                <h2 class="font-title text-5xl md:text-6xl mb-6 hover-colorize">How To Handle Rage-Bait Content</h2>
+                <p class="mb-16 max-w-4xl mx-auto font-body text-lg hover-colorize">Doing these steps could reduce the effectiveness of rage-baiting and hopefully make it ineffective.</p>
+                <div class="md:flex items-center justify-center gap-20 max-w-7xl mx-auto">
+                    <img src="hand.png" alt="Phone showing content" class="w-full max-w-md h-auto rounded-lg mb-12 md:mb-0 mx-auto flex-shrink-0" onerror="this.onerror=null;this.src='https://placehold.co/384x576/1C1C1C/F3F3F3?text=Handling+Content';">
+                    <div class="text-left space-y-8">
+                        <div>
+                            <h3 class="font-title text-3xl text-red-500 hover-colorize">Pause and Assess</h3>
+                            <p class="font-body text-lg hover-colorize">It may not sound complicated, but the hardest thing to do when encountering such content is to pause. When we are provoked or offended, the first thing we usually do is retaliate, and that just proves the effectiveness of rage-baiting. When encountering this kind of post, it is better to take a pause and assess the content by looking for the red flags. When it comes to rage-baiting, negatively engaging with it does more harm than good.</p>
+                        </div>
+                        <div>
+                            <h3 class="font-title text-3xl text-red-500 hover-colorize">Ignore</h3>
+                            <p class="font-body text-lg hover-colorize">The simplest yet effective way to handle rage-bait content is to ignore it. The main purpose of such content is to gain much attention; it is formulated to receive engagement without concern for negative reaction. This signifies that ignoring decreases the gravity of rage-baiting; no traction leads to such posts being ineffective.</p>
+                        </div>
+                        <div>
+                            <h3 class="font-title text-3xl text-red-500 hover-colorize">Report</h3>
+                            <p class="font-body text-lg hover-colorize">If you still feel like striking back, a better option is to report. In almost all social media platforms, there’s a function where a user can report posts and accounts, and this function is located on the three-dot icon. When you want to report content or its creator, look for the three-dot icon. This icon leads to the option of reporting and muting their account to avoid seeing rage-bait posts on your social media feed.</p>
+                        </div>
+                        <div>
+                            <h3 class="font-title text-3xl text-red-500 hover-colorize">Educate</h3>
+                            <p class="font-body text-lg hover-colorize">A simple action of educating friends and family about rage-baiting is a big help. For this initiative to succeed: Help us with our mission, take action by supporting responsible, factual, and credible content creators, and educate others on how rage-baiting works.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sources" class="bg-[#1C1C1C] pt-10 pb-20 px-4 sm:px-8">
+            <div class="container mx-auto max-w-4xl">
+                 <div id="sources-toggle" class="bg-[#DE7012] text-black p-4 rounded-t-lg cursor-pointer flex justify-between items-center">
+                    <h3 class="font-bold text-xl font-body">Sources</h3>
+                    <i id="sources-icon" class="fas fa-plus"></i>
+                </div>
+                <div id="sources-content" class="hidden border border-t-0 border-[#DE7012] p-4 rounded-b-lg">
+                    <ul class="list-disc list-inside space-y-3 text-sm font-body">
+                        <li>Baumeister, R. F., et al. (2001). Bad is stronger than good. <a href="https://doi.org/10.1037/0033-295X.108.2.323" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">Review of General Psychology</a>.</li>
+                        <li>Kramer, A. D. I., et al. (20014). Experimental evidence of massive-scale emotional contagion through social networks. <a href="https://www.pnas.org/doi/10.1073/pnas.1320040111" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">PNAS</a>.</li>
+                        <li>Przybylski, A. K., et al. (2013). Motivational, emotional, and behavioral correlates of fear of missing out. <a href="https://doi.org/10.1016/j.chb.2013.02.014" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">Computers in Human Behavior</a>.</li>
+                        <li><a href="https://www.shiftcomm.com/thinking/social-media-changed-traditional-media" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">How Social Media Fundamentally Changed Traditional Media</a></li>
+                        <li><a href="https://ic4ml.org/blogs/sensationalism-in-the-media/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">Sensationalism in the Media</a></li>
+                        <li>Praxis Psychologie Berlin. (2023). Rage-baiting on social media: Recognising and understanding it. <a href="https://www.praxis-psychologie-berlin.de/en/wikiblog-english/articles/rage-baiting-on-social-media-recognising-and-understanding-it" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">Praxis Psychologie Berlin</a>.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-black py-10 px-4 sm:px-8">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+            <a href="index.html" class="flex items-center">
+                <div class="w-64 flex items-center justify-center p-1">
+                     <img src="logo.png" alt="Behind The Bait Logo" class="w-full h-full object-contain" onerror="this.onerror=null;this.src='https://placehold.co/256x136/000000/F3F3F3?text=Logo';">
+                </div>
+            </a>
+            
+            <div class="flex space-x-8">
+                <a href="https://www.facebook.com/share/1F2SUPAc8g/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="text-4xl hover:text-[#DE7012] transition-colors"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/behindthebait_?igsh=bGIyODlqeGZlYWh2&utm_source=qr" target="_blank" rel="noopener noreferrer" class="text-4xl hover:text-[#913434] transition-colors"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@behindthebait" target="_blank" rel="noopener noreferrer" class="text-4xl hover:text-[#6F4F5E] transition-colors"><i class="fab fa-youtube"></i></a>
+                <a href="mailto:example@email.com" class="text-4xl hover:text-[#D7990D] transition-colors"><i class="fas fa-envelope"></i></a>
+            </div>
+
+            <p class="text-sm text-gray-400 font-body">&copy; BEHIND THE BAIT, 2025</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = menuBtn.querySelector('i');
+
+        menuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.toggle('hidden');
+            document.body.style.overflow = isHidden ? 'auto' : 'hidden';
+
+            if (isHidden) {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            }
+        });
+
+        const hoverColors = ['#F9F3EF', '#6F4F5E', '#913434', '#DE7012', '#D7990D'];
+
+        const desktopNavLinks = document.querySelectorAll('header nav a');
+        desktopNavLinks.forEach(link => {
+            link.addEventListener('mouseover', () => {
+                const randomColor = hoverColors[Math.floor(Math.random() * hoverColors.length)];
+                link.style.color = randomColor;
+            });
+            link.addEventListener('mouseout', () => {
+                link.style.color = ''; 
+            });
+        });
+
+        const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('mouseover', () => {
+                const randomColor = hoverColors[Math.floor(Math.random() * hoverColors.length)];
+                link.style.color = randomColor;
+            });
+            link.addEventListener('mouseout', () => {
+                if (!link.classList.contains('blog-nav-link')) {
+                    link.style.color = '#F3F3F3'; 
+                } else {
+                    link.style.color = '#DE7012';
+                }
+            });
+        });
+        
+        document.querySelectorAll('.read-more-btn').forEach(button => {
+            button.addEventListener('click', event => {
+                const textContainer = event.target.previousElementSibling;
+                textContainer.classList.toggle('expanded');
+                event.target.textContent = textContainer.classList.contains('expanded') ? 'See Less' : 'See More';
+            });
+        });
+
+        const sourcesToggle = document.getElementById('sources-toggle');
+        const sourcesContent = document.getElementById('sources-content');
+        const sourcesIcon = document.getElementById('sources-icon');
+
+        if (sourcesToggle && sourcesContent && sourcesIcon) {
+            sourcesToggle.addEventListener('click', () => {
+                const isHidden = sourcesContent.classList.toggle('hidden');
+                sourcesIcon.classList.toggle('fa-plus', isHidden);
+                sourcesIcon.classList.toggle('fa-minus', !isHidden);
+            });
+        }
+
+        const textToColorize = document.querySelectorAll('.hover-colorize');
+        textToColorize.forEach(el => {
+            el.addEventListener('mouseover', () => {
+                const randomColor = hoverColors[Math.floor(Math.random() * hoverColors.length)];
+                el.style.color = randomColor;
+            });
+            el.addEventListener('mouseout', () => {
+                el.style.color = '';
+            });
+        });
+    </script>
+
+</body>
+</html>

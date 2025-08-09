@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Behind The Bait</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        body {
+            background-color: #1C1C1C;
+            color: #F3F3F3;
+            font-family: 'Ubuntu', sans-serif; 
+        }
+        .font-title {
+            font-family: 'Chakra Petch', sans-serif;
+            font-weight: 700;
+        }
+        .font-body {
+            font-family: 'Ubuntu', sans-serif;
+        }
+        .arrow-link {
+            display: inline-flex;
+            align-items: center;
+            transition: transform 0.2s ease-in-out, color 0.3s;
+        }
+        .arrow-link:hover {
+            transform: translateX(5px);
+            color: #DE7012;
+        }
+        .arrow-link i {
+            margin-left: 0.5rem;
+        }
+        #home {
+            position: relative;
+            overflow: hidden;
+            background: url('12.gif') no-repeat center center;
+            background-size: cover;
+            height: 100vh;
+            width: 100%;
+        }
+        #home::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(17, 17, 17, 1) 0%, rgba(17, 17, 17, 0.5) 25%, rgba(17, 17, 17, 0.5) 75%, rgba(17, 17, 17, 1) 100%);
+            z-index: 1;
+        }
+        #learn, #watch, #blog {
+            position: relative;
+            z-index: 0;
+        }
+        #learn::before, #watch::before, #blog::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('image_9efabf.png');
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        #watch::after, #about::after, #learn::after, #blog::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+        #watch::after, #learn::after, #blog::after, #about::after {
+            background: linear-gradient(to bottom, #111111 0%, transparent 30%, transparent 70%, #111111 100%);
+        }
+        #about {
+             background: url('8.png') no-repeat center center;
+             background-size: cover;
+        }
+        .blog-nav-link {
+             color: #DE7012 !important;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="py-2 px-4 md:px-8 sticky top-0 bg-[#1C1C1C] bg-opacity-80 backdrop-blur-sm z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center">
+                <div class="w-48 h-28 flex items-center justify-center p-1">
+                    <img src="logo.png" alt="Behind The Bait Logo" class="w-full h-full object-contain" onerror="this.style.display='none'">
+                </div>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="Video.html" class="transition-colors duration-300 font-bold">Watch</a>
+                <a href="Learn.html" class="transition-colors duration-300 font-bold">Learn</a>
+                <a href="Blog.html" class="blog-nav-link transition-colors duration-300 font-bold">Blog</a>
+                <a href="Contact.html" class="transition-colors duration-300 font-bold">Contact</a>
+                <a href="Team.html" class="transition-colors duration-300 font-bold">About Us</a>
+            </nav>
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-white focus:outline-none z-50 relative">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-[#1C1C1C]/95 backdrop-blur-sm z-40">
+        <div class="flex flex-col items-center justify-center h-full text-center space-y-6">
+            <a href="Video.html" class="text-2xl font-bold text-white">Watch</a>
+            <a href="Learn.html" class="text-2xl font-bold text-white">Learn</a>
+            <a href="Blog.html" class="blog-nav-link text-2xl font-bold">Blog</a>
+            <a href="Contact.html" class="text-2xl font-bold text-white">Contact</a>
+            <a href="Team.html" class="text-2xl font-bold text-white">About Us</a>
+        </div>
+    </div>
+
+    <main>
+        <section id="home" class="flex items-center">
+            <div class="w-full py-20 px-4 sm:px-8 md:px-16 text-center md:text-left relative z-10">
+                <div class="pt-20">
+                    <h1 class="font-title text-5xl sm:text-6xl md:text-8xl leading-none">READY TO BE<br>UNBAITED?</h1>
+                    <p class="mt-6 text-lg max-w-md mx-auto md:mx-0 font-body">Learn more about rage-baiting and its effect on social media users.</p>
+                    <a href="Learn.html" class="arrow-link mt-6 font-bold text-lg inline-flex hover:text-[#913434]">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="learn" class="py-16 md:py-20 px-4 sm:px-8">
+            <div class="container mx-auto flex flex-col md:grid md:grid-cols-2 gap-12 md:gap-16 items-center relative z-10">
+                <div class="flex justify-center w-full max-w-md mx-auto">
+                    <a href="Learn.html">
+                       <img src="logo.png" alt="Behind The Bait Logo" class="w-full h-full object-contain" onerror="this.style.display='none'">
+                    </a>
+                </div>
+                <div class="text-center md:text-left">
+                    <p class="mt-4 text-lg leading-relaxed font-body">
+                        Behind The Bait is a website that dives into the world of 
+                        rage-baiting—the use of provocative and sensationalized content to 
+                        abuse negative engagement, unhealthy arguments, and mental stress.
+                    </p>
+                    <p class="mt-4 text-lg leading-relaxed font-body">
+                        Through infographics and a series of interviews, this project aims 
+                        to expose how rage-baiting is made, its effect on social media users, 
+                        and ways to decrease its use with the hope of promoting digital media literacy, mindful 
+                        social media use, and a heathy online community.
+                    </p>
+                </div> 
+            </div>
+        </section>
+
+        <section id="watch" class="relative py-16 md:py-20 px-4 sm:px-8">
+            <div class="absolute inset-0 bg-[url('1.jpg')] bg-cover bg-center opacity-80 z-0"></div>
+            <div class="relative z-10 container mx-auto flex flex-col md:grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+                <div class="flex justify-center">
+                    <img src="14.png" alt="Unbaited video series episodes" class="w-full max-w-4xl" onerror="this.onerror=null;this.src='https://placehold.co/1024x576/111111/F9F3EF?text=Image+Not+Found';">
+                </div>
+                <div class="text-center md:text-left">
+                    <img src="ub.png" alt="Unbaited Logo" class="mb-4 mx-auto md:mx-0" onerror="this.onerror=null;this.src='https://placehold.co/400x100/1C1C1C/F3F3F3?text=Unbaited+Logo';">
+                    <p class="mt-4 text-lg max-w-lg mx-auto md:mx-0 font-body">
+                        A three-part informative video that shows rage-baiting through 
+                        various forms of media. Featuring professionals and adult social 
+                        media users who will be tackling everything about rage-baiting, 
+                        its anatomy, impact on viewers, and advice on dealing with such content.
+                    </p>
+                    <a href="Video.html" class="arrow-link mt-6 font-bold text-lg inline-flex hover:text-[#6F4F5E]">
+                        Watch Now <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <section id="blog" class="py-16 md:py-20 px-4 sm:px-8">
+             <div class="container mx-auto flex flex-col md:grid md:grid-cols-2 gap-12 md:gap-16 items-center relative z-10">
+                   <div class="text-center md:text-left">
+                       <h2 class="font-title text-5xl sm:text-7xl">BLOGS</h2>
+                       <p class="mt-4 text-lg max-w-lg mx-auto md:mx-0 font-body">
+                            Read blogs about rage-baiting and even submit your own.
+                       </p>
+                       <a href="Blog.html" class="arrow-link mt-6 font-bold text-lg inline-flex hover:text-[#D7990D]">
+                            Read More <i class="fas fa-arrow-right"></i>
+                       </a>
+                   </div>
+                   <div class="flex justify-center md:justify-end w-full">
+                       <img src="em.png" alt="Blog graphic placeholder" class="w-full max-w-2xl" onerror="this.onerror=null;this.src='https://placehold.co/600x400/111111/F9F3EF?text=Blog+Graphic';">
+                   </div>
+             </div>
+        </section>
+
+      <section id="about" class="relative overflow-hidden text-center py-16 md:py-20 px-4 sm:px-8">
+    <div class="container mx-auto relative z-10">
+        <h2 class="font-title text-4xl sm:text-5xl">BEHIND THE BAIT TEAM</h2>
+        <p class="mt-4 text-lg max-w-2xl mx-auto font-body">
+            Behind The Bait is a multimedia project created by Multimedia students 
+            from De La Salle-College of Saint Benilde.
+        </p>
+        <a href="Team.html" class="arrow-link mt-6 font-bold text-lg inline-flex justify-center hover:text-[#913434]">
+            Read More <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</section>
+
+    </main>
+
+    <footer class="bg-black py-10 px-4 sm:px-8">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+            <a href="index.html" class="flex items-center">
+                <div class="w-64 flex items-center justify-center p-1">
+                     <img src="logo.png" alt="Behind The Bait Logo" class="w-full h-full object-contain" onerror="this.style.display='none'">
+                </div>
+            </a>
+            
+            <div class="flex space-x-8">
+                <a href="https://www.facebook.com/share/1F2SUPAc8g/?mibextid=wwXIfr" target="_blank" class="text-3xl hover:text-[#DE7012] transition-colors"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/behindthebait_?igsh=bGIyODlqeGZlYWh2&utm_source=qr" target="_blank" class="text-3xl hover:text-[#913434] transition-colors"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@behindthebait" target="_blank" class="text-3xl hover:text-[#6F4F5E] transition-colors"><i class="fab fa-youtube"></i></a>
+                <a href="mailto:example@email.com" class="text-3xl hover:text-[#D7990D] transition-colors"><i class="fas fa-envelope"></i></a>
+            </div>
+
+            <p class="text-sm text-gray-400 font-body">&copy; BEHIND THE BAIT, 2025</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = menuBtn.querySelector('i');
+
+        menuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.toggle('hidden');
+            document.body.style.overflow = isHidden ? 'auto' : 'hidden';
+
+            if (isHidden) {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            }
+        });
+
+        const hoverColors = ['#F9F3EF', '#6F4F5E', '#913434', '#DE7012', '#D7990D'];
+
+        const desktopNavLinks = document.querySelectorAll('header nav a');
+        desktopNavLinks.forEach(link => {
+            link.addEventListener('mouseover', () => {
+                const randomColor = hoverColors[Math.floor(Math.random() * hoverColors.length)];
+                link.style.color = randomColor;
+            });
+            link.addEventListener('mouseout', () => {
+                link.style.color = ''; 
+            });
+        });
+
+        const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('mouseover', () => {
+                const randomColor = hoverColors[Math.floor(Math.random() * hoverColors.length)];
+                link.style.color = randomColor;
+            });
+            link.addEventListener('mouseout', () => {
+                if (!link.classList.contains('blog-nav-link')) {
+                    link.style.color = '#F3F3F3'; 
+                } else {
+                    link.style.color = '#DE7012';
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

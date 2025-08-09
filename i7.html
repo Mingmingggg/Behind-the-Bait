@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why We Fall For Rage-Baiting - Behind The Bait</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        body {
+            background-color: #1C1C1C;
+            color: #F3F3F3;
+            font-family: 'Ubuntu', sans-serif; 
+        }
+        .font-title {
+            font-family: 'Chakra Petch', sans-serif;
+            font-weight: 700;
+        }
+        .font-body {
+            font-family: 'Ubuntu', sans-serif;
+        }
+        
+        #blog-content {
+            position: relative;
+            background-image: url('2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        #blog-content::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 1;
+            background: linear-gradient( to bottom, #1C1C1C 0%, rgba(28, 28, 28, 0.1) 20%, rgba(28, 28, 28, 0.1) 80%, #1C1C1C 100% );
+        }
+        .accent-color { color: #6F4F5E; }
+        .accent-bg { background-color: #6F4F5E; }
+        .accent-border { border-color: #6F4F5E; }
+        .focus-accent-border:focus { border-color: #6F4F5E; }
+        .blog-nav-link { color: #DE7012 !important; }
+
+        .collapsible-text {
+            max-height: 15em; 
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        .collapsible-text.expanded {
+            max-height: 1000px; 
+        }
+    </style>
+</head>
+<body class="bg-[#1C1C1C]">
+
+    <header class="py-2 px-4 md:px-8 sticky top-0 bg-[#1C1C1C] bg-opacity-80 backdrop-blur-sm z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center">
+                <div class="w-48 h-28 flex items-center justify-center p-1">
+                    <img src="logo.png" alt="Behind The Bait Logo" class="w-full h-full object-contain" onerror="this.onerror=null;this.src='https://placehold.co/192x112/1C1C1C/F3F3F3?text=Logo';">
+                </div>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="Video.html" class="transition-colors duration-300 font-bold">Watch</a>
+                <a href="Learn.html" class="transition-colors duration-300 font-bold">Learn</a>
+                <a href="Blog.html" class="blog-nav-link transition-colors duration-300 font-bold">Blog</a>
+                <a href="Contact.html" class="transition-colors duration-300 font-bold">Contact</a>
+                <a href="Team.html" class="transition-colors duration-300 font-bold">About Us</a>
+            </nav>
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-white focus:outline-none z-50 relative">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-[#1C1C1C]/95 backdrop-blur-sm z-40">
+        <div class="flex flex-col items-center justify-center h-full text-center space-y-6">
+            <a href="Video.html" class="text-2xl font-bold text-white">Watch</a>
+            <a href="Learn.html" class="text-2xl font-bold text-white">Learn</a>
+            <a href="Blog.html" class="blog-nav-link text-2xl font-bold">Blog</a>
+            <a href="Contact.html" class="text-2xl font-bold text-white">Contact</a>
+            <a href="Team.html" class="text-2xl font-bold text-white">About Us</a>
+        </div>
+    </div>
+
+    <main>
+        <section id="blog-content" class="py-20 px-4 sm:px-8 md:px-16">
+            <div class="container mx-auto max-w-4xl relative z-10">
+                <article class="bg-black bg-opacity-70 p-8 md:p-12 rounded-lg">
+                    <h1 class="font-title text-4xl md:text-5xl mb-2 hover-colorize">Why We Fall For Rage-Baiting</h1>
+                    <p class="text-xl accent-color mb-8 font-body hover-colorize">By Chriselynne Juan</p>
+
+                    <img src="Illus 3.jpg" alt="Why we Fall For Rage-Baiting" class="w-full h-auto object-cover rounded-lg mb-8" onerror="this.onerror=null;this.src='https://placehold.co/800x450/1C1C1C/F3F3F3?text=Blog+Image';">
+
+                    <div class="collapsible-text">
+                        <p class="mb-6 text-lg leading-relaxed font-body hover-colorize">
+                            Rage-baiting isn’t just a product of manipulative content creators or sneaky algorithms; it works because it targets deep-rooted psychological triggers within us. These types of posts are carefully crafted to provoke, drawing us in with topics that spark strong emotions like anger, frustration, or indignation. Whether we realize it or not, we often take the bait, pulled into a digital whirlwind of outrage and impulsive reactions.
+                        </p>
+                        <p class="mb-6 text-lg leading-relaxed font-body hover-colorize">
+                            One of the main reasons rage-baiting is so effective lies in what psychologists call the negative bias. This is our natural tendency to focus more on negative information than positive. In a digital space where thousands of posts compete for our attention, the content that shocks or enrages us is far more likely to grab our focus. This makes emotionally charged posts spread faster and reach wider audiences, often regardless of how accurate or fair they are.
+                        </p>
+                        <p class="mb-6 text-lg leading-relaxed font-body hover-colorize">
+                            The effects do not stop with a single scroll or comment. Online, our emotions are contagious. This phenomenon, known as emotional contagion, means that reading or viewing content filled with rage can actually affect our own mood and mindset. Suddenly, what started as passive scrolling becomes emotional involvement, and the cycle of provocation and reaction deepens as more users join in the outrage.
+                        </p>
+                        <p class="mb-6 text-lg leading-relaxed font-body hover-colorize">
+                            Social Media platforms are built to reward interaction, and rage-baiting thrives in that system. Every like, share, or comment triggers a dopamine release in the brain, the same feel-good chemical that drives habit addiction. This cycle creates an addictive loop whenever we feel a rush from engaging, so we keep clicking and reacting, even if it leaves us emotionally drained or misinformed.
+                        </p>
+                        <p class="mb-6 text-lg leading-relaxed font-body hover-colorize">
+                            Another powerful force behind our engagement is the fear of missing out, or FOMO. When a post goes viral or a controversy erupts online, it’s easy to feel the pressure to be part of the conversation. Many people join in, not just to share their views, but simply to avoid feeling left out. This herd mentality only fuels the fire by amplifying the reach of rage-baiting posts and rewarding their creators with more visibility and engagement.
+                        </p>
+                        <p class="mb-6 text-lg leading-relaxed font-body hover-colorize">
+                            But there is a way to stop this cycle. By becoming aware of the emotional and psychological tactics behind rage-baiting, we can take back control of what we consume and how we respond. Simple steps like pausing before reacting, asking if a post is meant to inform or provoke, and using tools like muting or reporting can make a real difference. In a digital space filled with manipulation and noise, choosing not to engage can be a quiet but powerful act of resistance.
+                        </p>
+                    </div>
+                    <button class="read-more-btn text-red-500 hover:underline mt-2">See More</button>
+
+                    <div class="mt-12">
+                        <div id="sources-toggle" class="accent-bg text-white p-4 rounded-t-lg cursor-pointer flex justify-between items-center">
+                            <h3 class="font-bold text-xl font-body">Sources</h3>
+                            <i id="sources-icon" class="fas fa-plus"></i>
+                        </div>
+                        <div id="sources-content" class="hidden border border-t-0 accent-border p-4 rounded-b-lg">
+                            <ul class="list-disc list-inside space-y-3 text-sm">
+                                <li>Baumeister, R. F., et al. (2001). Bad is stronger than good. <a href="https://doi.org/10.1037/0033-295X.108.2.323" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">Review of General Psychology</a>.</li>
+                                <li>Kramer, A. D. I., et al. (2014). Experimental evidence of massive-scale emotional contagion through social networks. <a href="https://www.pnas.org/doi/10.1073/pnas.1320040111" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">PNAS</a>.</li>
+                                <li>Alter, A. (2017). Irresistible: The rise of addictive technology and the business of keeping us hooked. <a href="https://www.theguardian.com/books/2017/mar/05/irresistible-addictive-technology-book-adam-alter-review" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">Article Summary</a>.</li>
+                                <li>Przybylski, A. K., et al. (2013). Motivational, emotional, and behavioral correlates of fear of missing out. <a href="https://doi.org/10.1016/j.chb.2013.02.014" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">Computers in Human Behavior</a>.</li>
+                                <li>Narayanan, A., & Vallor, S. (2021). Why social media makes us feel terrible—and what we can do about it. <a href="https://www.humanetech.com" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">Center for Humane Technology</a>.</li>
+                                <li>Praxis Psychologie Berlin. (2023). Rage-baiting on social media: Recognising and understanding it. <a href="https://www.praxis-psychologie-berlin.de/en/wikiblog-english/articles/rage-baiting-on-social-media-recognising-and-understanding-it" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">Praxis Psychologie Berlin</a>.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 bg-black bg-opacity-40 p-6 rounded-lg">
+                        <h3 class="font-bold text-2xl text-center mb-6 hover-colorize">Comment Section</h3>
+                        <form id="comment-form" class="mb-6">
+                            <div class="mb-4">
+                                <label for="comment-name" class="block mb-2 font-semibold font-body">Name</label>
+                                <input type="text" id="comment-name" class="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus-accent-border" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="comment-text" class="block mb-2 font-semibold font-body">Comment</label>
+                                <textarea id="comment-text" rows="4" class="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus-accent-border" required></textarea>
+                            </div>
+                            <button type="submit" class="w-full accent-bg hover:bg-opacity-80 text-white font-bold py-3 px-4 rounded-lg transition-colors">Post Comment</button>
+                        </form>
+                        <div id="comments-list" class="space-y-4">
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-black py-10 px-4 sm:px-8">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+            <a href="index.html" class="flex items-center">
+                <div class="w-64 flex items-center justify-center p-1">
+                     <img src="logo.png" alt="Behind The Bait Logo" class="w-full h-full object-contain" onerror="this.onerror=null;this.src='https://placehold.co/256x136/000000/F3F3F3?text=Logo';">
+                </div>
+            </a>
+            
+            <div class="flex space-x-8">
+                <a href="https://www.facebook.com/share/1F2SUPAc8g/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="text-4xl hover:text-[#DE7012] transition-colors"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/behindthebait_?igsh=bGIyODlqeGZlYWh2&utm_source=qr" target="_blank" rel="noopener noreferrer" class="text-4xl hover:text-[#913434] transition-colors"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@behindthebait" target="_blank" rel="noopener noreferrer" class="text-4xl hover:text-[#6F4F5E] transition-colors"><i class="fab fa-youtube"></i></a>
+                <a href="mailto:example@email.com" class="text-4xl hover:text-[#D7990D] transition-colors"><i class="fas fa-envelope"></i></a>
+            </div>
+
+            <p class="text-sm text-gray-400 font-body">&copy; BEHIND THE BAIT, 2025</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = menuBtn.querySelector('i');
+
+        menuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.toggle('hidden');
+            document.body.style.overflow = isHidden ? 'auto' : 'hidden';
+
+            if (isHidden) {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            }
+        });
+
+        const hoverColors = ['#F9F3EF', '#6F4F5E', '#913434', '#DE7012', '#D7990D'];
+
+        const desktopNavLinks = document.querySelectorAll('header nav a');
+        desktopNavLinks.forEach(link => {
+            link.addEventListener('mouseover', () => {
+                const randomColor = hoverColors[Math.floor(Math.random() * hoverColors.length)];
+                link.style.color = randomColor;
+            });
+            link.addEventListener('mouseout', () => {
+                link.style.color = ''; 
+            });
+        });
+
+        const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('mouseover', () => {
+                const randomColor = hoverColors[Math.floor(Math.random() * hoverColors.length)];
+                link.style.color = randomColor;
+            });
+            link.addEventListener('mouseout', () => {
+                if (!link.classList.contains('blog-nav-link')) {
+                    link.style.color = '#F3F3F3'; 
+                } else {
+                    link.style.color = '#DE7012';
+                }
+            });
+        });
+        
+        document.querySelectorAll('.read-more-btn').forEach(button => {
+            button.addEventListener('click', event => {
+                const textContainer = event.target.previousElementSibling;
+                textContainer.classList.toggle('expanded');
+                event.target.textContent = textContainer.classList.contains('expanded') ? 'See Less' : 'See More';
+            });
+        });
+
+        const sourcesToggle = document.getElementById('sources-toggle');
+        const sourcesContent = document.getElementById('sources-content');
+        const sourcesIcon = document.getElementById('sources-icon');
+
+        if (sourcesToggle && sourcesContent && sourcesIcon) {
+            sourcesToggle.addEventListener('click', () => {
+                const isHidden = sourcesContent.classList.toggle('hidden');
+                sourcesIcon.classList.toggle('fa-plus', isHidden);
+                sourcesIcon.classList.toggle('fa-minus', !isHidden);
+            });
+        }
+
+        const commentForm = document.getElementById('comment-form');
+        const commentsList = document.getElementById('comments-list');
+
+        if(commentForm && commentsList) {
+            commentForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const nameInput = document.getElementById('comment-name');
+                const commentInput = document.getElementById('comment-text');
+
+                const name = nameInput.value.trim();
+                const commentText = commentInput.value.trim();
+
+                if (name && commentText) {
+                    const commentElement = document.createElement('div');
+                    commentElement.classList.add('bg-gray-800', 'p-4', 'rounded-lg');
+                    
+                    const nameElement = document.createElement('p');
+                    nameElement.classList.add('font-bold', 'accent-color');
+                    nameElement.textContent = name;
+
+                    const textElement = document.createElement('p');
+                    textElement.classList.add('mt-2');
+                    textElement.textContent = commentText;
+
+                    commentElement.appendChild(nameElement);
+                    commentElement.appendChild(textElement);
+
+                    commentsList.prepend(commentElement);
+
+                    nameInput.value = '';
+                    commentInput.value = '';
+                }
+            });
+        }
+
+        const textToColorize = document.querySelectorAll('.hover-colorize');
+        textToColorize.forEach(el => {
+            el.addEventListener('mouseover', () => {
+                const randomColor = hoverColors[Math.floor(Math.random() * hoverColors.length)];
+                el.style.color = randomColor;
+            });
+            el.addEventListener('mouseout', () => {
+                el.style.color = '';
+            });
+        });
+    </script>
+
+</body>
+</html>
