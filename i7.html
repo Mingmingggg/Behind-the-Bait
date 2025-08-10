@@ -47,13 +47,21 @@
         .accent-border { border-color: #6F4F5E; }
         .focus-accent-border:focus { border-color: #6F4F5E; }
 
+        /* Modified to initially show all content, and use 'collapsed-view' for collapsing */
         .collapsible-text {
-            max-height: 15em; 
-            overflow: hidden;
+            max-height: 9999px; /* Default: Expanded to show all content */
+            overflow: visible; /* Ensure content is not hidden */
             transition: max-height 0.5s ease-in-out;
         }
-        .collapsible-text.expanded {
-            max-height: 1000px; 
+        .collapsible-text.collapsed-view { /* New class for the collapsed state */
+            max-height: 15em;
+            overflow: hidden;
+        }
+        /* Clearfix to contain floated elements within their parent */
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
         }
     </style>
 </head>
@@ -98,18 +106,18 @@
                     <h1 class="font-title text-4xl md:text-5xl mb-2 hover-colorize">Why We Fall For Rage-Baiting</h1>
                     <p class="text-xl accent-color mb-8 font-body hover-colorize">By Chriselynne Juan</p>
 
-                    <img src="Illus 3.jpg" alt="Why we Fall For Rage-Baiting" class="w-full h-auto object-cover rounded-lg mb-8" onerror="this.onerror=null;this.src='https://placehold.co/800x450/1C1C1C/F3F3F3?text=Blog+Image';">
-
-                    <div class="collapsible-text">
+                    <div class="collapsible-text clearfix"> 
                         <p class="mb-6 text-lg leading-relaxed font-body hover-colorize">
                             Rage-baiting isn’t just a product of manipulative content creators or sneaky algorithms; it works because it targets deep-rooted psychological triggers within us. These types of posts are carefully crafted to provoke, drawing us in with topics that spark strong emotions like anger, frustration, or indignation. Whether we realize it or not, we often take the bait, pulled into a digital whirlwind of outrage and impulsive reactions.
                         </p>
+                        <img src="2a.jpg" alt="Why we Fall For Rage-Baiting" class="block mx-auto w-full h-auto object-cover rounded-lg mb-8" onerror="this.onerror=null;this.src='https://placehold.co/800x450/1C1C1C/F3F3F3?text=Blog+Image';">
                         <p class="mb-6 text-lg leading-relaxed font-body hover-colorize">
                             One of the main reasons rage-baiting is so effective lies in what psychologists call the negative bias. This is our natural tendency to focus more on negative information than positive. In a digital space where thousands of posts compete for our attention, the content that shocks or enrages us is far more likely to grab our focus. This makes emotionally charged posts spread faster and reach wider audiences, often regardless of how accurate or fair they are.
                         </p>
                         <p class="mb-6 text-lg leading-relaxed font-body hover-colorize">
                             The effects do not stop with a single scroll or comment. Online, our emotions are contagious. This phenomenon, known as emotional contagion, means that reading or viewing content filled with rage can actually affect our own mood and mindset. Suddenly, what started as passive scrolling becomes emotional involvement, and the cycle of provocation and reaction deepens as more users join in the outrage.
                         </p>
+                        <img src="5a.jpg" alt="Image related to rage-baiting" class="float-right ml-4 mb-4 w-1/2 md:w-1/3 object-cover rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/400x300/1C1C1C/F3F3F3?text=Placeholder+Image';">
                         <p class="mb-6 text-lg leading-relaxed font-body hover-colorize">
                             Social Media platforms are built to reward interaction, and rage-baiting thrives in that system. Every like, share, or comment triggers a dopamine release in the brain, the same feel-good chemical that drives habit addiction. This cycle creates an addictive loop whenever we feel a rush from engaging, so we keep clicking and reacting, even if it leaves us emotionally drained or misinformed.
                         </p>
@@ -206,7 +214,7 @@
                 link.style.color = randomColor;
             });
             link.addEventListener('mouseout', () => {
-                link.style.color = ''; 
+                link.style.color = '';
             });
         });
 
@@ -226,10 +234,13 @@
         });
         
         document.querySelectorAll('.read-more-btn').forEach(button => {
+            const textContainer = button.previousElementSibling; // This targets the .collapsible-text div
+            // Initially, the content is fully visible, so the button should offer to 'See Less'.
+            button.textContent = 'See Less';
+
             button.addEventListener('click', event => {
-                const textContainer = event.target.previousElementSibling;
-                textContainer.classList.toggle('expanded');
-                event.target.textContent = textContainer.classList.contains('expanded') ? 'See Less' : 'See More';
+                const isNowCollapsed = textContainer.classList.toggle('collapsed-view'); // Toggle the new collapsed-view class
+                event.target.textContent = isNowCollapsed ? 'See More' : 'See Less';
             });
         });
 

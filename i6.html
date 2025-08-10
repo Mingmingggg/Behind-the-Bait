@@ -47,13 +47,21 @@
         .accent-border { border-color: #913434; }
         .focus-accent-border:focus { border-color: #913434; }
 
+        /* Modified to initially show all content, and use 'collapsed-view' for collapsing */
         .collapsible-text {
-            max-height: 15em; 
-            overflow: hidden;
+            max-height: 9999px; /* Default: Expanded to show all content */
+            overflow: visible; /* Ensure content is not hidden */
             transition: max-height 0.5s ease-in-out;
         }
-        .collapsible-text.expanded {
-            max-height: 1000px; 
+        .collapsible-text.collapsed-view { /* New class for the collapsed state */
+            max-height: 15em;
+            overflow: hidden;
+        }
+        /* Clearfix to contain floated elements within their parent */
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
         }
     </style>
 </head>
@@ -98,18 +106,19 @@
                     <h1 class="font-title text-4xl md:text-5xl mb-2 hover-colorize">How Rage-Baiting Can Spread Fake Information</h1>
                     <p class="text-xl accent-color mb-8 font-body hover-colorize">By Aloy Hernandez</p>
 
-                    <img src="Illus 2.jpg" alt="How Rage-baiting Can Spread Fake Information" class="w-full h-auto object-cover rounded-lg mb-8" onerror="this.onerror=null;this.src='https://placehold.co/800x450/1C1C1C/F3F3F3?text=Blog+Image';">
-
-                    <div class="collapsible-text">
+                    <div class="collapsible-text clearfix"> 
                         <p class="mb-6 text-lg leading-relaxed font-body hover-colorize">
                             Rage-baiting can go hand in hand with fake news. Aside from the emotional and mental effects it possesses, it can also cause confusion and misinformation. But how can such content hook and feed you with wrong information?
                         </p>
+                        <img src="4a.jpg" alt="How Rage-baiting Can Spread Fake Information" class="block mx-auto w-full h-auto object-cover rounded-lg mb-8" onerror="this.onerror=null;this.src='https://placehold.co/800x450/1C1C1C/F3F3F3?text=Blog+Image';">
                         <p class="mb-6 text-lg leading-relaxed font-body hover-colorize">
                             Before rage-baiting, sensationalism already existed and started as a form of gossip and dramatized oral history (Sloan et al., 2002, as cited in Frye, 2005). Imagine a <i>chismosa</i> (gossiper) in your barangay. She hears a neighbor dropping a plate, and as the story spreads, a simple accident turns into a family falling apart. That is how rage-baiting misleads people. 
                         </p>
                         <p class="mb-6 text-lg leading-relaxed font-body hover-colorize">
                             A rage-bait content often has triggering words, exaggerated tone, and provocative gestures. Once the audience gets baited by such content, it tends to elevate emotions, causing a minimization of critical thinking. Content creators use this technique to hook people at the expense of integrity. Aside from gaining high social media engagements, it can be a tool for such content creators’ financial gain and, moreover, a way to spread hate propaganda to certain public figures.
                         </p>
+                     
+                        <img src="1a.jpg" alt="Image related to rage-baiting" class="float-right ml-4 mb-4 w-1/2 md:w-1/3 object-cover rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/400x300/1C1C1C/F3F3F3?text=Placeholder+Image';">
                         <p class="mb-6 text-lg leading-relaxed font-body hover-colorize">
                             Even so, not every opinionated article is driven by negative machinations. Media formats like tabloids, talk shows, and opinion columns often use this practice. At first, it might seem contradictory—but it’s not. These platforms usually include disclaimers stating that the content reflects the personal opinions of the creator. To put it simply, when looking for information online, make sure the content is presented as opinion or, at the very least, includes a disclaimer to avoid confusion.
                         </p>
@@ -222,10 +231,13 @@
         });
         
         document.querySelectorAll('.read-more-btn').forEach(button => {
+            const textContainer = button.previousElementSibling; // This targets the .collapsible-text div
+            // Initially, the content is fully visible, so the button should offer to 'See Less'.
+            button.textContent = 'See Less';
+
             button.addEventListener('click', event => {
-                const textContainer = event.target.previousElementSibling;
-                textContainer.classList.toggle('expanded');
-                event.target.textContent = textContainer.classList.contains('expanded') ? 'See Less' : 'See More';
+                const isNowCollapsed = textContainer.classList.toggle('collapsed-view'); // Toggle the new collapsed-view class
+                event.target.textContent = isNowCollapsed ? 'See More' : 'See Less';
             });
         });
 

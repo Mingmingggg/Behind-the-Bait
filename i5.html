@@ -43,14 +43,20 @@
             background: linear-gradient( to bottom, #1C1C1C 0%, rgba(28, 28, 28, 0.1) 20%, rgba(28, 28, 28, 0.1) 80%, #1C1C1C 100% );
         }
     
-
         .collapsible-text {
-            max-height: 15em;
-            overflow: hidden;
+            max-height: 9999px; /* Default: Expanded to show all content */
+            overflow: visible; /* Ensure content is not hidden */
             transition: max-height 0.5s ease-in-out;
         }
-        .collapsible-text.expanded {
-            max-height: 1000px; 
+        .collapsible-text.collapsed-view { /* New class for the collapsed state */
+            max-height: 15em;
+            overflow: hidden;
+        }
+        /* Clearfix to contain floated elements within their parent */
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
         }
     </style>
 </head>
@@ -95,18 +101,19 @@
                     <h1 class="font-title text-5xl md:text-6xl mb-2 hover-colorize">To Rage or Not To Rage</h1>
                     <p class="text-xl text-[#DE7012] mb-8 font-body hover-colorize">By Aloy Hernandez</p>
                     
-                    <img src="Illus 1.jpg" alt="To Rage or Not to Rage" class="w-full h-auto object-cover rounded-lg mb-8" onerror="this.onerror=null;this.src='https://placehold.co/800x450/1C1C1C/F3F3F3?text=Blog+Image';">
-
-                    <div class="collapsible-text">
+                    <div class="collapsible-text clearfix"> 
                         <p class="mb-6 text-lg leading-relaxed font-body hover-colorize">
                             While scrolling through your social media, have you ever encountered content that just made you furious and shared your sentiments in the comment section? We know that we have the freedom to say whatever we want, and being vulnerable is nothing to be ashamed of; however, this type of content is meant to provoke. This tactic is called rage-baiting—a strategy that thrives on anger, emotional reactions, and impulsive engagement. But here’s the catch: the more we react, the more power we give it.
                         </p>
+                        <img src="6a.jpg" alt="To Rage or Not to Rage" class="block mx-auto w-full h-auto object-cover rounded-lg mb-8" onerror="this.onerror=null;this.src='https://placehold.co/800x450/1C1C1C/F3F3F3?text=Blog+Image';">
                         <p class="mb-6 text-lg leading-relaxed font-body hover-colorize">
                             There are various approaches to how rage-baiting is used; however, there is a red flag that is evident in such content when the content creator seems like they are teasing or provoking the audience. As a way to bait the audience, such content creators will share their negative opinion on someone or something, or do an act that could be deemed socially unacceptable in a way that is exaggerated, offensive, and ill-intentioned. If you find yourself drawn to this kind of content, so are countless others online, which leads to a flood of likes, comments, and shares, meaning high engagement that could be a door to many benefits. 
                         </p>
                         <p class="mb-6 text-lg leading-relaxed font-body hover-colorize">
                             Gaining high visibility is the way to rise in the online world. Aside from public attention, rage-bait content creators do this for financial gain. Social media platforms pay content creators with high digital reach, not only that, they also get paid by brand deals, and advertisements popping up in between their content. More alarmingly, such practice can also be a tool to control public narratives. 
                         </p>
+
+                        <img src="7a.jpg" alt="Image related to rage-baiting" class="float-right ml-4 mb-4 w-1/2 md:w-1/3 object-cover rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/400x300/1C1C1C/F3F3F3?text=Placeholder+Image';">
                         <p class="mb-6 text-lg leading-relaxed font-body hover-colorize">
                             The algorithm is also a factor in why this type of content is spreading throughout social media. To clarify, it is an automated system that establishes what content will appear on your feed based on your preferences, interactions, and digital footprint. This shows that simply finishing an entire rage-bait content can be the cause of infiltration of such posts, what more if you like, share, and comment? That only makes it worse.
                         </p>
@@ -220,10 +227,13 @@
         });
         
         document.querySelectorAll('.read-more-btn').forEach(button => {
+            const textContainer = button.previousElementSibling; // This targets the .collapsible-text div
+            // Initially, the content is fully visible, so the button should offer to 'See Less'.
+            button.textContent = 'See Less';
+
             button.addEventListener('click', event => {
-                const textContainer = event.target.previousElementSibling;
-                textContainer.classList.toggle('expanded');
-                event.target.textContent = textContainer.classList.contains('expanded') ? 'See Less' : 'See More';
+                const isNowCollapsed = textContainer.classList.toggle('collapsed-view'); // Toggle the new collapsed-view class
+                event.target.textContent = isNowCollapsed ? 'See More' : 'See Less';
             });
         });
 
